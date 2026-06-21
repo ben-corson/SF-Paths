@@ -249,7 +249,7 @@ const SFPathsTracker = () => {
   useEffect(() => {
     if (view === 'map' && mapRef.current && !mapInstanceRef.current && paths.length > 0 && typeof L !== 'undefined') {
       setTimeout(() => {
-        const map = L.map(mapRef.current).setView([37.8715, -122.2730], 13);
+        const map = L.map(mapRef.current).setView([37.7600, -122.4400], 13);
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
