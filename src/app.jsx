@@ -7,7 +7,7 @@ const COLORS = {
   orange: '#FD5A1E',
 };
 
-const BerkeleyPathsTracker = () => {
+const SFPathsTracker = () => {
   // State management
   const [paths, setPaths] = useState([]);
   const [completedPaths, setCompletedPaths] = useState(new Set());
@@ -46,10 +46,10 @@ const BerkeleyPathsTracker = () => {
   const [milestone, setMilestone] = useState(null);
 
   const MILESTONES = [
-    { pct: 25, emoji: '🌟', title: 'Quarter of the way there!', message: "You've completed 25% of Berkeley's paths. Keep exploring!" },
-    { pct: 50, emoji: '🏅', title: 'Halfway there!', message: "50% done — you're a true Berkeley path explorer." },
+    { pct: 25, emoji: '🌟', title: 'Quarter of the way there!', message: "You've completed 25% of San Francisco's paths. Keep exploring!" },
+    { pct: 50, emoji: '🏅', title: 'Halfway there!', message: "50% done — you're a true SF path explorer." },
     { pct: 75, emoji: '🔥', title: 'Three quarters done!', message: "75% complete. The finish line is in sight!" },
-    { pct: 100, emoji: '🏆', title: 'All paths completed!', message: "You've walked every developed path in Berkeley. Incredible!" },
+    { pct: 100, emoji: '🏆', title: 'All paths completed!', message: "You've walked every developed path in San Francisco. Incredible!" },
   ];
 
   // Listen for service worker update signal from index.html
@@ -579,7 +579,7 @@ const BerkeleyPathsTracker = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sf-black mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading Berkeley Paths...</p>
+          <p className="mt-4 text-gray-600">Loading San Francisco Paths...</p>
         </div>
       </div>
     );
@@ -605,7 +605,7 @@ const BerkeleyPathsTracker = () => {
       {showInstallPrompt && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{background: 'rgba(0,0,0,0.5)'}}>
           <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6">
-            <h2 className="text-lg font-bold text-sf-black mb-2">Install Berkeley Paths Navigator</h2>
+            <h2 className="text-lg font-bold text-sf-black mb-2">Install San Francisco Paths Navigator</h2>
             <p className="text-sm text-gray-600 mb-4 leading-relaxed">Add this app to your home screen for the best experience:</p>
             <ul className="text-sm text-gray-700 space-y-2 mb-6">
               <li className="flex gap-2"><span>📍</span><span><strong>Your progress is saved</strong> on your device — no account needed</span></li>
@@ -697,7 +697,7 @@ const BerkeleyPathsTracker = () => {
       <header className="bg-sf-black text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-3 py-2">
           {/* Title - full width on one line */}
-          <h1 className="text-lg font-bold mb-1.5">Berkeley Paths Navigator</h1>
+          <h1 className="text-lg font-bold mb-1.5">San Francisco Paths Navigator</h1>
           
           {/* Navigation and completion info - second line */}
           <div className="flex items-center justify-between gap-2">
@@ -1098,18 +1098,7 @@ const BerkeleyPathsTracker = () => {
       <footer className="bg-white border-t border-gray-200 mt-12 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-sm">
           <p>
-            Berkeley Paths Navigator is not affiliated with{' '}
-            <a
-              href="https://www.berkeleypaths.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sf-black hover:underline"
-            >
-              the Berkeley Path Wanderers Association
-            </a>, but we encourage you to support their work preserving, restoring, and creating public paths in Berkeley
-          </p>
-          <p className="mt-2">
-            Berkeley Paths Navigator v1.0.0 | Made with ❤️ for Berkeley path explorers
+            San Francisco Paths Navigator | Made with ❤️ for SF path explorers
           </p>
         </div>
       </footer>
@@ -1121,5 +1110,5 @@ const BerkeleyPathsTracker = () => {
 const rootElement = document.getElementById('root');
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
-  root.render(<BerkeleyPathsTracker />);
+  root.render(<SFPathsTracker />);
 }

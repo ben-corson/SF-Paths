@@ -1,11 +1,11 @@
 {
-  "name": "Berkeley Paths Navigator",
-  "short_name": "Berkeley Paths",
-  "description": "Track your progress through all 105 developed paths in Berkeley, California",
+  "name": "San Francisco Paths Navigator",
+  "short_name": "SF Paths",
+  "description": "Track your progress through San Francisco's public paths and stairways",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#941B1E",
+  "theme_color": "#27251F",
   "orientation": "portrait-primary",
   "icons": [
     {
