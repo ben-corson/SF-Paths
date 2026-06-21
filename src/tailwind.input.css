@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-berkeley-burgundy: #941B1E;
-  --color-berkeley-burgundy-dark: #6B1214;
-  --color-berkeley-gold: #EAA636;
+  --color-sf-black: #27251F;
+  --color-sf-black-dark: #1a1914;
+  --color-sf-orange: #FD5A1E;
 }

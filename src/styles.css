@@ -1,8 +1,8 @@
 :root {
     /* Theme variables — brand colors are defined in index.html Tailwind config.
        Update these to match if you change the brand colors there. */
-    --bg-gradient-start: #941B1E;  /* = berkeley-burgundy */
-    --bg-gradient-end: #6B1214;    /* = berkeley-burgundy-dark */
+    --bg-gradient-start: #27251F;  /* = sf-black */
+    --bg-gradient-end: #1a1914;    /* = sf-black-dark */
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.9);
     --card-bg: rgba(255, 255, 255, 0.95);
@@ -45,28 +45,28 @@ body {
 .app-title {
     font-family: 'Alike', serif;
     letter-spacing: 0.02em;
-    color: var(--berkeley-gold);
+    color: var(--sf-orange);
 }
 
 /* Berkeley themed elements */
-.berkeley-burgundy-bg { 
-    background-color: var(--berkeley-burgundy); 
+.sf-black-bg { 
+    background-color: var(--sf-black); 
 }
 
-.berkeley-gold-bg { 
-    background-color: var(--berkeley-gold); 
+.sf-orange-bg { 
+    background-color: var(--sf-orange); 
 }
 
-.berkeley-gold-text { 
-    color: var(--berkeley-gold); 
+.sf-orange-text { 
+    color: var(--sf-orange); 
 }
 
-.berkeley-burgundy-text { 
-    color: var(--berkeley-burgundy); 
+.sf-black-text { 
+    color: var(--sf-black); 
 }
 
-.berkeley-tan-bg { 
-    background-color: var(--berkeley-tan); 
+.sf-tan-bg { 
+    background-color: var(--sf-tan); 
 }
 
 /* Dark mode toggle button */
@@ -77,9 +77,9 @@ body {
     z-index: 9999;
     padding: 10px 20px;
     border-radius: 25px;
-    background-color: var(--berkeley-burgundy);
+    background-color: var(--sf-black);
     color: white;
-    border: 2px solid var(--berkeley-gold);
+    border: 2px solid var(--sf-orange);
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
@@ -89,7 +89,7 @@ body {
 }
 
 .dark-mode-toggle:hover {
-    background-color: var(--berkeley-burgundy-dark);
+    background-color: var(--sf-black-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px var(--shadow);
 }
@@ -101,7 +101,7 @@ body {
 
 body.dark-mode .dark-mode-toggle {
     background-color: #2a2a2a;
-    border-color: var(--berkeley-gold);
+    border-color: var(--sf-orange);
 }
 
 body.dark-mode .dark-mode-toggle::before {
@@ -133,7 +133,7 @@ body.dark-mode .leaflet-popup-content {
 }
 
 body.dark-mode .leaflet-container a {
-    color: var(--berkeley-gold);
+    color: var(--sf-orange);
 }
 
 /* Control attribution for dark mode */
@@ -153,23 +153,23 @@ body.dark-mode h6 {
 }
 
 body.dark-mode a {
-    color: var(--berkeley-gold);
+    color: var(--sf-orange);
 }
 
 body.dark-mode a:hover {
-    color: var(--berkeley-light-tan);
+    color: var(--sf-light-tan);
 }
 
 body.dark-mode .btn,
 body.dark-mode button {
-    background-color: var(--berkeley-burgundy);
+    background-color: var(--sf-black);
     color: white;
-    border-color: var(--berkeley-gold);
+    border-color: var(--sf-orange);
 }
 
 body.dark-mode .btn:hover,
 body.dark-mode button:hover {
-    background-color: var(--berkeley-burgundy-dark);
+    background-color: var(--sf-black-dark);
 }
 
 /* Input fields in dark mode */
@@ -198,8 +198,8 @@ body.dark-mode table {
 }
 
 /* Ensure Berkeley gold accent remains vibrant in dark mode */
-body.dark-mode .berkeley-gold-text,
+body.dark-mode .sf-orange-text,
 body.dark-mode .app-title {
-    color: var(--berkeley-gold);
-    text-shadow: 0 0 10px rgba(234, 166, 54, 0.3);
+    color: var(--sf-orange);
+    text-shadow: 0 0 10px rgba(253, 90, 30, 0.3);
 }

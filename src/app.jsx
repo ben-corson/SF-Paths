@@ -1,10 +1,10 @@
 const { useState, useEffect, useRef } = React;
 
-// Brand colors — keep in sync with Tailwind config in index.html
+// Brand colors — keep in sync with Tailwind config
 const COLORS = {
-  burgundy: '#941B1E',
-  burgundyDark: '#6B1214',
-  gold: '#EAA636',
+  black: '#27251F',
+  blackDark: '#1a1914',
+  orange: '#FD5A1E',
 };
 
 const BerkeleyPathsTracker = () => {
@@ -292,7 +292,7 @@ const BerkeleyPathsTracker = () => {
             if (markersRef.current[focusPath.id]) {
               const { line } = markersRef.current[focusPath.id];
               const isCompleted = completedPaths.has(focusPath.id);
-              const baseColor = isCompleted ? COLORS.burgundy : COLORS.gold;
+              const baseColor = isCompleted ? COLORS.black : COLORS.orange;
               line.setStyle({ weight: 8, opacity: 1, color: baseColor });
               setTimeout(() => line.setStyle({ weight: 4, opacity: 0.8, color: baseColor }), 2000);
             }
@@ -346,14 +346,14 @@ const BerkeleyPathsTracker = () => {
           const { line } = markersRef.current[path.id];
           const isCompleted = completedPaths.has(path.id);
           
-          const color = isCompleted ? COLORS.burgundy : COLORS.gold;
+          const color = isCompleted ? COLORS.black : COLORS.orange;
           line.setStyle({ color: color });
 
           line.setPopupContent(`
             <div style="min-width: 200px;">
-              <h3 style="margin: 0 0 8px 0; font-weight: 600; color: ${COLORS.burgundy};">${path.name}</h3>
+              <h3 style="margin: 0 0 8px 0; font-weight: 600; color: ${COLORS.black};">${path.name}</h3>
               <p style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${path.location}</p>
-              ${isCompleted ? `<p style="margin: 0; font-size: 12px; color: ${COLORS.burgundy}; font-weight: 600;">✓ Completed</p>` : `<p style="margin: 0; font-size: 12px; color: ${COLORS.gold}; font-weight: 600;">Not completed</p>`}
+              ${isCompleted ? `<p style="margin: 0; font-size: 12px; color: ${COLORS.black}; font-weight: 600;">✓ Completed</p>` : `<p style="margin: 0; font-size: 12px; color: ${COLORS.orange}; font-weight: 600;">Not completed</p>`}
             </div>
           `);
         }
@@ -423,7 +423,7 @@ const BerkeleyPathsTracker = () => {
   // Add path line to map
   const addPathMarker = (map, path) => {
     const isCompleted = completedPaths.has(path.id);
-    const color = isCompleted ? COLORS.burgundy : COLORS.gold;
+    const color = isCompleted ? COLORS.black : COLORS.orange;
     const segments = path.segments || [path.coordinates || [path.start, path.end]];
 
     const line = L.featureGroup();
@@ -432,9 +432,9 @@ const BerkeleyPathsTracker = () => {
 
     line.bindPopup(`
       <div style="min-width: 200px;">
-        <h3 style="margin: 0 0 8px 0; font-weight: 600; color: ${COLORS.burgundy};">${path.name}</h3>
+        <h3 style="margin: 0 0 8px 0; font-weight: 600; color: ${COLORS.black};">${path.name}</h3>
         <p style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${path.location}</p>
-        ${isCompleted ? `<p style="margin: 0; font-size: 12px; color: ${COLORS.burgundy}; font-weight: 600;">✓ Completed</p>` : `<p style="margin: 0; font-size: 12px; color: ${COLORS.gold}; font-weight: 600;">Not completed</p>`}
+        ${isCompleted ? `<p style="margin: 0; font-size: 12px; color: ${COLORS.black}; font-weight: 600;">✓ Completed</p>` : `<p style="margin: 0; font-size: 12px; color: ${COLORS.orange}; font-weight: 600;">Not completed</p>`}
       </div>
     `);
 
@@ -507,7 +507,7 @@ const BerkeleyPathsTracker = () => {
     map.setView([midLat, midLng], 17);
     if (markersRef.current[path.id]) {
       const { line } = markersRef.current[path.id];
-      const baseColor = completedPaths.has(path.id) ? COLORS.burgundy : COLORS.gold;
+      const baseColor = completedPaths.has(path.id) ? COLORS.black : COLORS.orange;
       line.setStyle({ weight: 8, opacity: 1, color: baseColor });
       setTimeout(() => line.setStyle({ weight: 4, opacity: 0.8, color: baseColor }), 1500);
     }
@@ -578,7 +578,7 @@ const BerkeleyPathsTracker = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-berkeley-burgundy mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sf-black mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading Berkeley Paths...</p>
         </div>
       </div>
@@ -605,7 +605,7 @@ const BerkeleyPathsTracker = () => {
       {showInstallPrompt && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{background: 'rgba(0,0,0,0.5)'}}>
           <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6">
-            <h2 className="text-lg font-bold text-berkeley-burgundy mb-2">Install Berkeley Paths Navigator</h2>
+            <h2 className="text-lg font-bold text-sf-black mb-2">Install Berkeley Paths Navigator</h2>
             <p className="text-sm text-gray-600 mb-4 leading-relaxed">Add this app to your home screen for the best experience:</p>
             <ul className="text-sm text-gray-700 space-y-2 mb-6">
               <li className="flex gap-2"><span>📍</span><span><strong>Your progress is saved</strong> on your device — no account needed</span></li>
@@ -615,7 +615,7 @@ const BerkeleyPathsTracker = () => {
             {isIOS ? (
               <a
                 href="install.html"
-                className="block w-full text-center bg-berkeley-burgundy text-white font-semibold py-2.5 rounded-xl mb-3 text-sm"
+                className="block w-full text-center bg-sf-black text-white font-semibold py-2.5 rounded-xl mb-3 text-sm"
               >
                 Show me how
               </a>
@@ -630,14 +630,14 @@ const BerkeleyPathsTracker = () => {
                   }
                   setDeferredInstallPrompt(null);
                 }}
-                className="block w-full text-center bg-berkeley-burgundy text-white font-semibold py-2.5 rounded-xl mb-3 text-sm"
+                className="block w-full text-center bg-sf-black text-white font-semibold py-2.5 rounded-xl mb-3 text-sm"
               >
                 Install app
               </button>
             ) : (
               <a
                 href="install.html"
-                className="block w-full text-center bg-berkeley-burgundy text-white font-semibold py-2.5 rounded-xl mb-3 text-sm"
+                className="block w-full text-center bg-sf-black text-white font-semibold py-2.5 rounded-xl mb-3 text-sm"
               >
                 Show me how
               </a>
@@ -660,11 +660,11 @@ const BerkeleyPathsTracker = () => {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{background: 'rgba(0,0,0,0.5)'}}>
           <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center">
             <div style={{fontSize: '4rem', lineHeight: 1, marginBottom: '12px'}}>{milestone.emoji}</div>
-            <h2 className="text-xl font-bold text-berkeley-burgundy mb-2">{milestone.title}</h2>
+            <h2 className="text-xl font-bold text-sf-black mb-2">{milestone.title}</h2>
             <p className="text-sm text-gray-600 mb-6 leading-relaxed">{milestone.message}</p>
             <button
               onClick={() => setMilestone(null)}
-              className="bg-berkeley-burgundy text-white font-semibold py-2.5 rounded-xl text-sm w-full"
+              className="bg-sf-black text-white font-semibold py-2.5 rounded-xl text-sm w-full"
             >
               {milestone.pct === 100 ? 'Amazing!' : 'Keep going!'}
             </button>
@@ -674,7 +674,7 @@ const BerkeleyPathsTracker = () => {
 
       {/* Update banner */}
       {updateAvailable && (
-        <div className="fixed top-0 left-0 right-0 z-[9999] bg-berkeley-gold text-white text-sm font-medium flex items-center justify-between px-4 py-2.5 shadow-lg">
+        <div className="fixed top-0 left-0 right-0 z-[9999] bg-sf-orange text-white text-sm font-medium flex items-center justify-between px-4 py-2.5 shadow-lg">
           <span>A new version is available</span>
           <button
             onClick={() => {
@@ -687,14 +687,14 @@ const BerkeleyPathsTracker = () => {
               });
               Promise.all([cleanup, unreg]).then(() => window.location.reload());
             }}
-            className="ml-4 bg-white text-berkeley-burgundy px-3 py-1 rounded font-semibold text-xs"
+            className="ml-4 bg-white text-sf-black px-3 py-1 rounded font-semibold text-xs"
           >
             Update now
           </button>
         </div>
       )}
       {/* Header */}
-      <header className="bg-berkeley-burgundy text-white shadow-lg sticky top-0 z-50">
+      <header className="bg-sf-black text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-3 py-2">
           {/* Title - full width on one line */}
           <h1 className="text-lg font-bold mb-1.5">Berkeley Paths Navigator</h1>
@@ -702,7 +702,7 @@ const BerkeleyPathsTracker = () => {
           {/* Navigation and completion info - second line */}
           <div className="flex items-center justify-between gap-2">
             {/* Completion info */}
-            <div className="text-berkeley-gold text-xs whitespace-nowrap">
+            <div className="text-sf-orange text-xs whitespace-nowrap">
               {completedPaths.size}/{paths.length} ({completionPercentage}%)
             </div>
             
@@ -712,8 +712,8 @@ const BerkeleyPathsTracker = () => {
                 onClick={() => setView('list')}
                 className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
                   view === 'list'
-                    ? 'bg-white text-berkeley-burgundy'
-                    : 'bg-berkeley-burgundy-dark text-white hover:bg-opacity-80'
+                    ? 'bg-white text-sf-black'
+                    : 'bg-sf-black-dark text-white hover:bg-opacity-80'
                 }`}
               >
                 List
@@ -722,8 +722,8 @@ const BerkeleyPathsTracker = () => {
                 onClick={() => setView('map')}
                 className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
                   view === 'map'
-                    ? 'bg-white text-berkeley-burgundy'
-                    : 'bg-berkeley-burgundy-dark text-white hover:bg-opacity-80'
+                    ? 'bg-white text-sf-black'
+                    : 'bg-sf-black-dark text-white hover:bg-opacity-80'
                 }`}
               >
                 Map
@@ -735,7 +735,7 @@ const BerkeleyPathsTracker = () => {
           {view === 'list' && (
             <div className="mt-1.5 bg-white bg-opacity-20 rounded-full h-1 overflow-hidden">
               <div
-                className="bg-berkeley-gold h-full transition-all duration-500"
+                className="bg-sf-orange h-full transition-all duration-500"
                 style={{ width: `${completionPercentage}%` }}
               ></div>
             </div>
@@ -778,7 +778,7 @@ const BerkeleyPathsTracker = () => {
                 placeholder="Search paths by name or location..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-berkeley-burgundy focus:border-transparent text-gray-900 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sf-black focus:border-transparent text-gray-900 placeholder-gray-400"
               />
               
               <div className="flex gap-2 flex-wrap">
@@ -786,7 +786,7 @@ const BerkeleyPathsTracker = () => {
                   onClick={() => setFilterCompleted('all')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     filterCompleted === 'all'
-                      ? 'bg-berkeley-burgundy text-white'
+                      ? 'bg-sf-black text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100'
                   }`}
                 >
@@ -796,7 +796,7 @@ const BerkeleyPathsTracker = () => {
                   onClick={() => setFilterCompleted('completed')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     filterCompleted === 'completed'
-                      ? 'bg-berkeley-burgundy text-white'
+                      ? 'bg-sf-black text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100'
                   }`}
                 >
@@ -806,7 +806,7 @@ const BerkeleyPathsTracker = () => {
                   onClick={() => setFilterCompleted('incomplete')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     filterCompleted === 'incomplete'
-                      ? 'bg-berkeley-burgundy text-white'
+                      ? 'bg-sf-black text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100'
                   }`}
                 >
@@ -821,7 +821,7 @@ const BerkeleyPathsTracker = () => {
                   onClick={() => setSortBy('alphabetical')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     sortBy === 'alphabetical'
-                      ? 'bg-berkeley-gold text-white'
+                      ? 'bg-sf-orange text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100'
                   }`}
                 >
@@ -832,7 +832,7 @@ const BerkeleyPathsTracker = () => {
                   disabled={!userLocation}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     sortBy === 'distance'
-                      ? 'bg-berkeley-gold text-white'
+                      ? 'bg-sf-orange text-white'
                       : userLocation
                       ? 'bg-white text-gray-700 hover:bg-gray-100'
                       : 'bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -892,7 +892,7 @@ const BerkeleyPathsTracker = () => {
                     key={path.id}
                     onClick={() => setSelectedPath(path)}
                     className={`bg-white rounded-lg shadow hover:shadow-md transition-shadow cursor-pointer p-4 ${
-                      selectedPath?.id === path.id ? 'ring-2 ring-berkeley-burgundy' : ''
+                      selectedPath?.id === path.id ? 'ring-2 ring-sf-black' : ''
                     }`}
                   >
                     <div className="flex items-start justify-between">
@@ -907,7 +907,7 @@ const BerkeleyPathsTracker = () => {
                         </div>
                         <p className="text-gray-600 text-sm mt-1">{path.location}</p>
                         {sortBy === 'distance' && distance !== null && (
-                          <p className="text-berkeley-gold text-sm font-medium mt-1">
+                          <p className="text-sf-orange text-sm font-medium mt-1">
                             📍 {distance < 0.1 ? '< 0.1' : distance.toFixed(1)} miles away
                           </p>
                         )}
@@ -984,11 +984,11 @@ const BerkeleyPathsTracker = () => {
             <div className="flex-shrink-0 p-2 bg-gray-50 border-t text-xs text-gray-600">
               <div className="flex items-center justify-center gap-3 flex-wrap">
                 <span className="flex items-center gap-1">
-                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-berkeley-gold"></span>
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-sf-orange"></span>
                   Incomplete
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-berkeley-burgundy"></span>
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-sf-black"></span>
                   Completed
                 </span>
                 {userLocation && (
@@ -1005,7 +1005,7 @@ const BerkeleyPathsTracker = () => {
 
       {/* Sticky bottom sheet for List View selected path */}
       {selectedPath && view === 'list' && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-berkeley-burgundy shadow-2xl z-50 px-4 py-3">
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-sf-black shadow-2xl z-50 px-4 py-3">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between mb-2">
               <div className="flex-1 min-w-0">
@@ -1025,7 +1025,7 @@ const BerkeleyPathsTracker = () => {
                 className={`flex-1 px-4 py-2.5 rounded-lg font-medium text-sm transition-colors ${
                   completedPaths.has(selectedPath.id)
                     ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-berkeley-burgundy text-white hover:bg-berkeley-burgundy-dark'
+                    : 'bg-sf-black text-white hover:bg-sf-black-dark'
                 }`}
               >
                 {completedPaths.has(selectedPath.id) ? '✓ Completed' : 'Mark as Complete'}
@@ -1077,7 +1077,7 @@ const BerkeleyPathsTracker = () => {
                   className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors ${
                     completedPaths.has(selectedPath.id)
                       ? 'bg-green-600 text-white hover:bg-green-700'
-                      : 'bg-berkeley-burgundy text-white hover:bg-berkeley-burgundy-dark'
+                      : 'bg-sf-black text-white hover:bg-sf-black-dark'
                   }`}
                 >
                   {completedPaths.has(selectedPath.id) ? '✓ Completed' : 'Mark as Complete'}
@@ -1103,7 +1103,7 @@ const BerkeleyPathsTracker = () => {
               href="https://www.berkeleypaths.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-berkeley-burgundy hover:underline"
+              className="text-sf-black hover:underline"
             >
               the Berkeley Path Wanderers Association
             </a>, but we encourage you to support their work preserving, restoring, and creating public paths in Berkeley
