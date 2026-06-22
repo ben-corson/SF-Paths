@@ -40,7 +40,7 @@ const SFPathsTracker = () => {
   const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
   const [showInstallPrompt, setShowInstallPrompt] = useState(() => {
     if (isInstalled) return false;
-    return !localStorage.getItem('installPromptDismissed');
+    return !localStorage.getItem('sf-installPromptDismissed');
   });
   const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
   const [milestone, setMilestone] = useState(null);
@@ -150,7 +150,7 @@ const SFPathsTracker = () => {
   // Load saved data from localStorage
   useEffect(() => {
     try {
-      const savedCompleted = localStorage.getItem('completedPaths');
+      const savedCompleted = localStorage.getItem('sf-completedPaths');
       
       if (savedCompleted) {
         setCompletedPaths(new Set(JSON.parse(savedCompleted)));
@@ -162,7 +162,7 @@ const SFPathsTracker = () => {
 
   // Save completed paths to localStorage
   useEffect(() => {
-    localStorage.setItem('completedPaths', JSON.stringify([...completedPaths]));
+    localStorage.setItem('sf-completedPaths', JSON.stringify([...completedPaths]));
   }, [completedPaths]);
 
   // Get user's location
@@ -486,8 +486,8 @@ const SFPathsTracker = () => {
         });
         if (hit) {
           const seenKey = `milestone_${hit.pct}`;
-          if (!localStorage.getItem(seenKey)) {
-            localStorage.setItem(seenKey, 'true');
+          if (!localStorage.getItem('sf-' + seenKey)) {
+            localStorage.setItem('sf-' + seenKey, 'true');
             setTimeout(() => setMilestone(hit), 300);
           }
         }
@@ -625,7 +625,7 @@ const SFPathsTracker = () => {
                   deferredInstallPrompt.prompt();
                   const { outcome } = await deferredInstallPrompt.userChoice;
                   if (outcome === 'accepted') {
-                    localStorage.setItem('installPromptDismissed', 'true');
+                    localStorage.setItem('sf-installPromptDismissed', 'true');
                     setShowInstallPrompt(false);
                   }
                   setDeferredInstallPrompt(null);
@@ -644,7 +644,7 @@ const SFPathsTracker = () => {
             )}
             <button
               onClick={() => {
-                localStorage.setItem('installPromptDismissed', 'true');
+                localStorage.setItem('sf-installPromptDismissed', 'true');
                 setShowInstallPrompt(false);
               }}
               className="block w-full text-center text-gray-400 text-sm py-1"
