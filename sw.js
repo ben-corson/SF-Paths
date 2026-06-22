@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sf-paths-v12';
+const CACHE_NAME = 'sf-paths-v13';
 
 const STATIC_ASSETS = [
   './',
